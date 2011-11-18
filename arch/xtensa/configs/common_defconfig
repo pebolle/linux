@@ -14,7 +14,6 @@ CONFIG_GENERIC_HARDIRQS=y
 # Code maturity level options
 #
 CONFIG_EXPERIMENTAL=y
-CONFIG_CLEAN_COMPILE=y
 CONFIG_BROKEN_ON_SMP=y
 
 #
@@ -30,28 +29,20 @@ CONFIG_SYSCTL=y
 # CONFIG_AUDIT is not set
 CONFIG_LOG_BUF_SHIFT=14
 # CONFIG_HOTPLUG is not set
-CONFIG_KOBJECT_UEVENT=y
 # CONFIG_IKCONFIG is not set
 # CONFIG_EXPERT is not set
 CONFIG_KALLSYMS=y
 # CONFIG_KALLSYMS_ALL is not set
-# CONFIG_KALLSYMS_EXTRA_PASS is not set
 CONFIG_FUTEX=y
 CONFIG_EPOLL=y
 # CONFIG_CC_OPTIMIZE_FOR_SIZE is not set
 CONFIG_SHMEM=y
-CONFIG_CC_ALIGN_FUNCTIONS=0
-CONFIG_CC_ALIGN_LABELS=0
-CONFIG_CC_ALIGN_LOOPS=0
-CONFIG_CC_ALIGN_JUMPS=0
-# CONFIG_TINY_SHMEM is not set
 
 #
 # Loadable module support
 #
 CONFIG_MODULES=y
 # CONFIG_MODULE_UNLOAD is not set
-CONFIG_OBSOLETE_MODPARM=y
 CONFIG_MODVERSIONS=y
 # CONFIG_MODULE_SRCVERSION_ALL is not set
 CONFIG_KMOD=y
@@ -59,11 +50,6 @@ CONFIG_KMOD=y
 #
 # Processor type and features
 #
-CONFIG_XTENSA_ARCH_LINUX_BE=y
-# CONFIG_XTENSA_ARCH_LINUX_LE is not set
-# CONFIG_XTENSA_ARCH_LINUX_TEST is not set
-# CONFIG_XTENSA_ARCH_S5 is not set
-# CONFIG_XTENSA_CUSTOM is not set
 CONFIG_MMU=y
 # CONFIG_XTENSA_UNALIGNED_USER is not set
 # CONFIG_PREEMPT is not set
@@ -84,8 +70,6 @@ CONFIG_CMDLINE="console=ttyS0,38400 ip=bootp root=nfs nfsroot=/opt/montavista/pr
 # Bus options
 #
 CONFIG_PCI=y
-# CONFIG_PCI_LEGACY_PROC is not set
-# CONFIG_PCI_NAMES is not set
 
 #
 # PCCARD (PCMCIA/CardBus) support
@@ -155,7 +139,6 @@ CONFIG_INITRAMFS_SOURCE=""
 # IO Schedulers
 #
 CONFIG_IOSCHED_NOOP=y
-CONFIG_IOSCHED_AS=y
 CONFIG_IOSCHED_DEADLINE=y
 CONFIG_IOSCHED_CFQ=y
 # CONFIG_ATA_OVER_ETH is not set
@@ -182,7 +165,6 @@ CONFIG_IOSCHED_CFQ=y
 #
 # IEEE 1394 (FireWire) support
 #
-# CONFIG_IEEE1394 is not set
 
 #
 # I2O device support
@@ -198,7 +180,6 @@ CONFIG_NET=y
 # Networking options
 #
 # CONFIG_PACKET is not set
-# CONFIG_NETLINK_DEV is not set
 CONFIG_UNIX=y
 # CONFIG_NET_KEY is not set
 CONFIG_INET=y
@@ -220,8 +201,6 @@ CONFIG_IP_PNP_RARP=y
 # CONFIG_INET_ESP is not set
 # CONFIG_INET_IPCOMP is not set
 # CONFIG_INET_TUNNEL is not set
-# CONFIG_IP_TCPDIAG is not set
-# CONFIG_IP_TCPDIAG_IPV6 is not set
 # CONFIG_IPV6 is not set
 # CONFIG_NETFILTER is not set
 
@@ -238,7 +217,6 @@ CONFIG_IP_PNP_RARP=y
 # CONFIG_ATALK is not set
 # CONFIG_X25 is not set
 # CONFIG_LAPB is not set
-# CONFIG_NET_DIVERT is not set
 # CONFIG_ECONET is not set
 # CONFIG_WAN_ROUTER is not set
 
@@ -246,9 +224,6 @@ CONFIG_IP_PNP_RARP=y
 # QoS and/or fair queueing
 #
 CONFIG_NET_SCHED=y
-CONFIG_NET_SCH_CLK_JIFFIES=y
-# CONFIG_NET_SCH_CLK_GETTIMEOFDAY is not set
-# CONFIG_NET_SCH_CLK_CPU is not set
 CONFIG_NET_SCH_CBQ=m
 CONFIG_NET_SCH_HTB=m
 # CONFIG_NET_SCH_HFSC is not set
@@ -261,12 +236,9 @@ CONFIG_NET_SCH_GRED=m
 CONFIG_NET_SCH_DSMARK=m
 # CONFIG_NET_SCH_NETEM is not set
 CONFIG_NET_SCH_INGRESS=m
-CONFIG_NET_QOS=y
-CONFIG_NET_ESTIMATOR=y
 CONFIG_NET_CLS=y
 CONFIG_NET_CLS_TCINDEX=m
 CONFIG_NET_CLS_ROUTE4=m
-CONFIG_NET_CLS_ROUTE=y
 CONFIG_NET_CLS_FW=m
 CONFIG_NET_CLS_U32=m
 # CONFIG_CLS_U32_PERF is not set
@@ -274,7 +246,6 @@ CONFIG_NET_CLS_U32=m
 CONFIG_NET_CLS_RSVP=m
 CONFIG_NET_CLS_RSVP6=m
 # CONFIG_NET_CLS_ACT is not set
-CONFIG_NET_CLS_POLICE=y
 
 #
 # Network testing
@@ -301,7 +272,6 @@ CONFIG_DUMMY=y
 #
 CONFIG_NET_ETHERNET=y
 # CONFIG_MII is not set
-CONFIG_XT2000_SONIC=y
 # CONFIG_HAPPYMEAL is not set
 # CONFIG_SUNGEM is not set
 # CONFIG_NET_VENDOR_3COM is not set
@@ -311,7 +281,6 @@ CONFIG_XT2000_SONIC=y
 #
 # CONFIG_NET_TULIP is not set
 # CONFIG_HP100 is not set
-# CONFIG_NET_PCI is not set
 
 #
 # Ethernet (1000 Mbit)
@@ -323,7 +292,6 @@ CONFIG_XT2000_SONIC=y
 # CONFIG_HAMACHI is not set
 # CONFIG_YELLOWFIN is not set
 # CONFIG_R8169 is not set
-# CONFIG_SK98LIN is not set
 # CONFIG_TIGON3 is not set
 
 #
@@ -340,12 +308,10 @@ CONFIG_XT2000_SONIC=y
 #
 # Wireless LAN (non-hamradio)
 #
-CONFIG_NET_RADIO=y
 
 #
 # Obsolete Wireless cards support (pre-802.11)
 #
-CONFIG_STRIP=m
 
 #
 # Wireless 802.11b ISA/PCI cards support
@@ -360,7 +326,6 @@ CONFIG_HERMES=m
 # Prism GT/Duette 802.11(a/b/g) PCI/Cardbus support
 #
 # CONFIG_PRISM54 is not set
-CONFIG_NET_WIRELESS=y
 
 #
 # Wan interfaces
@@ -370,7 +335,6 @@ CONFIG_NET_WIRELESS=y
 # CONFIG_HIPPI is not set
 # CONFIG_PPP is not set
 # CONFIG_SLIP is not set
-# CONFIG_SHAPER is not set
 # CONFIG_NETCONSOLE is not set
 
 #
@@ -396,7 +360,6 @@ CONFIG_INPUT_MOUSEDEV=y
 CONFIG_INPUT_MOUSEDEV_SCREEN_X=1024
 CONFIG_INPUT_MOUSEDEV_SCREEN_Y=768
 # CONFIG_INPUT_JOYDEV is not set
-# CONFIG_INPUT_TSDEV is not set
 # CONFIG_INPUT_EVDEV is not set
 # CONFIG_INPUT_EVBUG is not set
 
@@ -404,7 +367,6 @@ CONFIG_INPUT_MOUSEDEV_SCREEN_Y=768
 # Input I/O drivers
 #
 # CONFIG_GAMEPORT is not set
-CONFIG_SOUND_GAMEPORT=y
 CONFIG_SERIO=y
 # CONFIG_SERIO_I8042 is not set
 # CONFIG_SERIO_SERPORT is not set
@@ -489,7 +451,6 @@ CONFIG_LEGACY_PTY_COUNT=256
 #
 # Digital Video Broadcasting Devices
 #
-# CONFIG_DVB is not set
 
 #
 # Graphics support
@@ -547,7 +508,6 @@ CONFIG_USB_ARCH_HAS_OHCI=y
 # CONFIG_ROMFS_FS is not set
 # CONFIG_QUOTA is not set
 CONFIG_DNOTIFY=y
-# CONFIG_AUTOFS_FS is not set
 # CONFIG_AUTOFS4_FS is not set
 
 #
@@ -569,13 +529,8 @@ CONFIG_DNOTIFY=y
 CONFIG_PROC_FS=y
 # CONFIG_PROC_KCORE is not set
 CONFIG_SYSFS=y
-CONFIG_DEVFS_FS=y
-# CONFIG_DEVFS_MOUNT is not set
-# CONFIG_DEVFS_DEBUG is not set
-# CONFIG_DEVPTS_FS_XATTR is not set
 # CONFIG_TMPFS is not set
 # CONFIG_HUGETLB_PAGE is not set
-CONFIG_RAMFS=y
 
 #
 # Miscellaneous filesystems
@@ -600,7 +555,6 @@ CONFIG_RAMFS=y
 CONFIG_NFS_FS=y
 CONFIG_NFS_V3=y
 # CONFIG_NFS_V4 is not set
-# CONFIG_NFS_DIRECTIO is not set
 # CONFIG_NFSD is not set
 CONFIG_ROOT_NFS=y
 CONFIG_LOCKD=y
@@ -608,8 +562,6 @@ CONFIG_LOCKD_V4=y
 # CONFIG_EXPORTFS is not set
 CONFIG_SUNRPC=y
 # CONFIG_RPCSEC_GSS_KRB5 is not set
-# CONFIG_RPCSEC_GSS_SPKM3 is not set
-# CONFIG_SMB_FS is not set
 # CONFIG_CIFS is not set
 # CONFIG_NCP_FS is not set
 # CONFIG_CODA_FS is not set
@@ -636,7 +588,6 @@ CONFIG_MAGIC_SYSRQ=y
 # CONFIG_DEBUG_SPINLOCK is not set
 # CONFIG_DEBUG_PAGEALLOC is not set
 # CONFIG_DEBUG_INFO is not set
-# CONFIG_DEBUG_SPINLOCK_SLEEP is not set
 # CONFIG_KGDB is not set
 
 #
