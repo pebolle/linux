@@ -34,13 +34,36 @@ foreach my $file (@files) {
 	open(my $fh, '<', $filename)
 		or die "$filename: $!\n";
 	$lineno = 0;
+	my $in_comment = 0;
+	my $swap_state = 0;
 	while ($line = <$fh>) {
 		$lineno++;
-		&check_include();
-		&check_asm_types();
-		&check_sizetypes();
-		&check_declarations();
-		# Dropped for now. Too much noise &check_config();
+
+		# strip inline comments
+		$line =~ s|/\*.*\*/||;
+
+		# try to handle multi line comments
+		if ($in_comment == 0 and $line =~ m|/\*|) {
+			$line =~ s|/\*.*$||;
+			# we still need to check (the first half of) this line
+			# so we set $in_comment after the checks
+			$swap_state = 1;
+		}
+		if ($in_comment == 1 and $line =~ m|\*/|) {
+			$line =~ s|^.*\*/||;
+			$in_comment = 0;
+		}
+		unless ($in_comment) {
+			check_include();
+			check_asm_types();
+			check_sizetypes();
+			check_declarations();
+			check_config();
+		}
+		if ($swap_state)  {
+			$in_comment = 1;
+			$swap_state = 0;
+		}
 	}
 	close $fh;
 }
