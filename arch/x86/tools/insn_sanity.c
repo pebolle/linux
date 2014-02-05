@@ -269,14 +269,16 @@ int main(int argc, char **argv)
 		insns++;
 	}
 
-	fprintf((errors) ? stderr : stdout,
-		"%s: %s: decoded and checked %d %s instructions with %d errors (seed:0x%x)\n",
-		prog,
-		(errors) ? "Failure" : "Success",
-		insns,
-		(input_file) ? "given" : "random",
-		errors,
-		seed);
+	if (verbose || errors) {
+		fprintf((errors) ? stderr : stdout,
+			"%s: %s: decoded and checked %d %s instructions with %d errors (seed:0x%x)\n",
+			prog,
+			(errors) ? "Failure" : "Success",
+			insns,
+			(input_file) ? "given" : "random",
+			errors,
+			seed);
+	}
 
 	return errors ? 1 : 0;
 }

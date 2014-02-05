@@ -166,7 +166,7 @@ int main(int argc, char **argv)
 	if (warnings)
 		fprintf(stderr, "Warning: decoded and checked %d"
 			" instructions with %d warnings\n", insns, warnings);
-	else
+	else if (verbose)
 		fprintf(stdout, "Success: decoded and checked %d"
 			" instructions\n", insns);
 	return 0;

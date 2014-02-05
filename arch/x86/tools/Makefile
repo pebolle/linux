@@ -19,7 +19,7 @@ quiet_cmd_posttest = TEST    $@
       cmd_posttest = ($(OBJDUMP) -v | $(AWK) -f $(chkobjdump)) || $(OBJDUMP) -d -j .text $(objtree)/vmlinux | $(AWK) -f $(distill_awk) | $(obj)/test_get_len $(posttest_64bit) $(posttest_verbose)
 
 quiet_cmd_sanitytest = TEST    $@
-      cmd_sanitytest = $(obj)/insn_sanity $(posttest_64bit) -m 1000000
+      cmd_sanitytest = $(obj)/insn_sanity $(posttest_64bit) $(posttest_verbose) -m 1000000
 
 posttest: $(obj)/test_get_len vmlinux $(obj)/insn_sanity
 	$(call cmd,posttest)
