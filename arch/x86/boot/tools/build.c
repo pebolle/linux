@@ -137,7 +137,7 @@ static void die(const char * str, ...)
 
 static void usage(void)
 {
-	die("Usage: build setup system zoffset.h image");
+	die("Usage: build setup system zoffset.h image verbose");
 }
 
 #ifdef CONFIG_EFI_STUB
@@ -337,11 +337,16 @@ int main(int argc, char ** argv)
 	int fd;
 	void *kernel;
 	u32 crc = 0xffffffffUL;
+	int verbose = 1;
 
 	efi_stub_defaults();
 
-	if (argc != 5)
+	if (argc != 6)
 		usage();
+
+	if (!strcmp(argv[5], "0"))
+		verbose = 0;
+
 	parse_zoffset(argv[3]);
 
 	dest = fopen(argv[4], "w");
@@ -375,7 +380,8 @@ int main(int argc, char ** argv)
 	/* Set the default root device */
 	put_unaligned_le16(DEFAULT_ROOT_DEV, &buf[508]);
 
-	printf("Setup is %d bytes (padded to %d bytes).\n", c, i);
+	if (verbose)
+		printf("Setup is %d bytes (padded to %d bytes).\n", c, i);
 
 	/* Open and stat the kernel file */
 	fd = open(argv[2], O_RDONLY);
@@ -384,7 +390,8 @@ int main(int argc, char ** argv)
 	if (fstat(fd, &sb))
 		die("Unable to stat `%s': %m", argv[2]);
 	sz = sb.st_size;
-	printf("System is %d kB\n", (sz+1023)/1024);
+	if (verbose)
+		printf("System is %d kB\n", (sz+1023)/1024);
 	kernel = mmap(NULL, sz, PROT_READ, MAP_SHARED, fd, 0);
 	if (kernel == MAP_FAILED)
 		die("Unable to mmap '%s': %m", argv[2]);
@@ -418,7 +425,8 @@ int main(int argc, char ** argv)
 	}
 
 	/* Write the CRC */
-	printf("CRC %x\n", crc);
+	if (verbose)
+		printf("CRC %x\n", crc);
 	put_unaligned_le32(crc, buf);
 	if (fwrite(buf, 1, 4, dest) != 4)
 		die("Writing CRC failed");
