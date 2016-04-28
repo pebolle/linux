@@ -14,7 +14,9 @@ $(obj)/system_certificates.o: $(obj)/x509_certificate_list
 # Cope with signing_key.x509 existing in $(srctree) not $(objtree)
 AFLAGS_system_certificates.o := -I$(srctree)
 
-quiet_cmd_extract_certs  = EXTRACT_CERTS   $(patsubst "%",%,$(2))
+# if extract-cert is called with an empty first argument it will use the
+# second argument to create an empty file
+quiet_cmd_extract_certs  = $(if $(patsubst "%",%,$(2)),EXTRACT_CERTS $(patsubst "%",%,$(2)),CREATE  $@)
       cmd_extract_certs  = scripts/extract-cert $(2) $@ || ( rm $@; exit 1)
 
 targets += x509_certificate_list
