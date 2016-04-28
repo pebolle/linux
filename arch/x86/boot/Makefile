@@ -74,11 +74,21 @@ $(obj)/bzImage: asflags-y  := $(SVGA_MODE)
 
 quiet_cmd_image = BUILD   $@
 cmd_image = $(obj)/tools/build $(obj)/setup.bin $(obj)/vmlinux.bin \
-			       $(obj)/zoffset.h $@
+			       $(obj)/zoffset.h $@ $(KBUILD_VERBOSE)
+
+# XXX move to Kbuild.include?
+lparen  := (
+rparen  := )
+quiet_cmd_done = DONE    $@ $(lparen)\#$(shell cat .version)$(rparen)
+cmd_done = :
 
 $(obj)/bzImage: $(obj)/setup.bin $(obj)/vmlinux.bin $(obj)/tools/build FORCE
 	$(call if_changed,image)
+ifeq ($(KBUILD_VERBOSE),0)
+	$(call if_changed,done)
+else
 	@echo 'Kernel: $@ is ready' ' (#'`cat .version`')'
+endif
 
 OBJCOPYFLAGS_vmlinux.bin := -O binary -R .note -R .comment -S
 $(obj)/vmlinux.bin: $(obj)/compressed/vmlinux FORCE
