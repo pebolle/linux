@@ -16,7 +16,7 @@ AFLAGS_system_certificates.o := -I$(srctree)
 
 # if extract-cert is called with an empty first argument it will use the
 # second argument to create an empty file
-quiet_cmd_extract_certs  = $(if $(patsubst "%",%,$(2)),EXTRACT_CERTS $(patsubst "%",%,$(2)),CREATE  $@)
+quiet_cmd_extract_certs  = $(if $(patsubst "%",%,$(2)),EXTRACT $(patsubst "%",%,$(2)),CREATE  $@)
       cmd_extract_certs  = scripts/extract-cert $(2) $@ || ( rm $@; exit 1)
 
 targets += x509_certificate_list
