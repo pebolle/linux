@@ -19,7 +19,7 @@ enum {
 
 enum bp_type_idx {
 	TYPE_INST 	= 0,
-#ifdef CONFIG_HAVE_MIXED_BREAKPOINTS_REGS
+#if defined(CONFIG_HAVE_MIXED_BREAKPOINTS_REGS) && defined(__KERNEL__)
 	TYPE_DATA	= 0,
 #else
 	TYPE_DATA	= 1,
