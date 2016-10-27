@@ -64,7 +64,7 @@ struct epoll_event {
 	__u64 data;
 } EPOLL_PACKED;
 
-#ifdef CONFIG_PM_SLEEP
+#if defined(CONFIG_PM_SLEEP) && defined(__KERNEL__)
 static inline void ep_take_care_of_epollwakeup(struct epoll_event *epev)
 {
 	if ((epev->events & EPOLLWAKEUP) && !capable(CAP_BLOCK_SUSPEND))
