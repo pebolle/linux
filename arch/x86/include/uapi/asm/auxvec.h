@@ -10,7 +10,7 @@
 #define AT_SYSINFO_EHDR		33
 
 /* entries in ARCH_DLINFO: */
-#if defined(CONFIG_IA32_EMULATION) || !defined(CONFIG_X86_64)
+#if defined(CONFIG_IA32_EMULATION) || !defined(CONFIG_X86_64) || !defined(__KERNEL__)
 # define AT_VECTOR_SIZE_ARCH 2
 #else /* else it's non-compat x86-64 */
 # define AT_VECTOR_SIZE_ARCH 1
