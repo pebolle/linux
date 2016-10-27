@@ -2149,7 +2149,7 @@ static int pkt_open_write(struct pktcdvd_device *pd)
 		return -EIO;
 	}
 
-	pkt_write_caching(pd, USE_WCACHING);
+	pkt_write_caching(pd, IS_ENABLED(CONFIG_CDROM_PKTCDVD_WCACHE));
 
 	if ((ret = pkt_get_max_speed(pd, &write_speed)))
 		write_speed = 16 * 177;
