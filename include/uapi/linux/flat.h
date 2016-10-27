@@ -13,7 +13,7 @@
 
 #define	FLAT_VERSION			0x00000004L
 
-#ifdef CONFIG_BINFMT_SHARED_FLAT
+#if defined(CONFIG_BINFMT_SHARED_FLAT) && defined(__KERNEL__)
 #define	MAX_SHARED_LIBS			(4)
 #else
 #define	MAX_SHARED_LIBS			(1)
